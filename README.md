@@ -2,7 +2,7 @@
 
 A simple and interactive chatbot, powered by a Node.js backend to securely handle API requests to the OpenRouter AI service.
 
-![Chatbot Preview](https://i.ibb.co/whgkbfmY/image.png)
+<img src="https://i.ibb.co/whgkbfmY/image.png" width="400" />
 
 ---
 
