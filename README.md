@@ -44,8 +44,8 @@ You need to have [Node.js](https://nodejs.org/) and `npm` installed on your syst
 
 1.  **Clone the Repository**
     ```bash
-    git clone [https://github.com/your-username/your-repository-name.git](https://github.com/your-username/your-repository-name.git)
-    cd your-repository-name
+    git clone https://github.com/AdityaLF/ChatBot.git
+    cd ChatBot
     ```
 
 2.  **Install NPM Packages**
@@ -76,6 +76,6 @@ You need to have [Node.js](https://nodejs.org/) and `npm` installed on your syst
 
 **Aditya**
 
--   **GitHub**: `[@AdityaLF](https://github.com/AdityaLF)`
--   **Discord**: `[@05.07am](https://discordapp.com/users/786163564205047839)`
--   **Instagram**: `[@adityaa_df](https://www.instagram.com/adityaa_df)`
+-   **GitHub**: [@AdityaLF](https://github.com/AdityaLF)
+-   **Discord**: [@05.07am](https://discordapp.com/users/786163564205047839)
+-   **Instagram**: [@adityaa_df](https://www.instagram.com/adityaa_df)
