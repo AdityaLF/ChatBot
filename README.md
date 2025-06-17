@@ -55,10 +55,10 @@ You need to have [Node.js](https://nodejs.org/) and `npm` installed on your syst
     ```
 
 3.  **Set Up Environment Variables**
-    Create a new file named `.env` in the root directory of the project and add your OpenRouter API key.
+    Replace "API_KEY_HERE" with your actual OpenRouter API key.
     ```
     # .env file
-    OPENROUTER_API_KEY="YOUR_OPENROUTER_API_KEY_HERE" 
+    OPENROUTER_API_KEY="API_KEY_HERE" 
     ```
 
 4.  **Run the Server**
