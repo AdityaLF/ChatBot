@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatBot</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+
+<button id="chatbot-btn">
+  <i class="fas fa-comment"></i>
+</button>
+
+<div id="chatbot-popup">
+  <h2>ChatBot</h2>
+  <div id="response"></div>
+  <input
+    type="text"
+    id="userInput"
+    placeholder="Type a message..."
+    onkeydown="if(event.key==='Enter') sendMessage()" />
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  const btn = document.getElementById('chatbot-btn');
+  const popup = document.getElementById('chatbot-popup');
+  const responseDiv = document.getElementById('response');
+
+  btn.addEventListener('click', () => {
+    popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
+  });
+
+  function addBubble(content, type) {
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble ' + type;
+    bubble.innerHTML = content;
+    responseDiv.appendChild(bubble);
+    responseDiv.scrollTop = responseDiv.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const inputField = document.getElementById('userInput');
+    const input = inputField.value.trim();
+    if (!input) return;
+
+    addBubble(input, 'user');
+    inputField.value = '';
+    addBubble(`<em>Typing...</em>`, 'bot');
+
+    try {
+
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messages: [{ role: "user", content: input }], 
+        }),
+      });
+
+      const data = await res.json();
+      const markdown = data.choices?.[0]?.message?.content || 'No response.';
+      responseDiv.removeChild(responseDiv.lastChild);
+      addBubble(marked.parse(markdown), 'bot');
+    } catch (err) {
+      responseDiv.removeChild(responseDiv.lastChild);
+      addBubble(`<strong>Error:</strong> ${err.message}`, 'bot');
+    }
+  }
+</script>
+
+  <header>
+    <div class="logo">ChatBot</div>+
+  </header>
+
+</body>
+</html>
